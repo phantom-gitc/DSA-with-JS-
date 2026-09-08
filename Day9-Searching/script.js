@@ -19,24 +19,24 @@ let prompt = require('prompt-sync')();
 
 // Binaray Search ..
 
-let arr = [ 2 , 5 , 8 ,19 , 45 ,67 ,78 ,88 , 94 ];
+// let arr = [ 2 , 5 , 8 ,19 , 45 ,67 ,78 ,88 , 94 ];
 
-let target = Number(prompt("Enter the number : "));
-let start = 0 , end = arr.length-1 ; index = -1 ;
+// let target = Number(prompt("Enter the number : "));
+// let start = 0 , end = arr.length-1 ; index = -1 ;
 
-while(start <= end){
-    let mid = Math.floor((start + end)/2);
-    if(arr[mid]== target){
-        index = mid;
-        break ;
-    }
-    else if(arr[mid]<target){
-        start = mid + 1  ;
-    }
-    else end = mid - 1 ;
-}
+// while(start <= end){
+//     let mid = Math.floor((start + end)/2);
+//     if(arr[mid]== target){
+//         index = mid;
+//         break ;
+//     }
+//     else if(arr[mid]<target){
+//         start = mid + 1  ;
+//     }
+//     else end = mid - 1 ;
+// }
 
-if(index == -1 ) console.log("Not found 😓 ");
-else console.log(" Element found at : " + index + " index");
+// if(index == -1 ) console.log("Not found 😓 ");
+// else console.log(" Element found at : " + index + " index");
 
 
