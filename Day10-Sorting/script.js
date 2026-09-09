@@ -1,42 +1,42 @@
 // Bubble Sort
 
-let arr = [10, 45, 39, 29, 65, 69];
-let n = arr.length;
+// let arr = [10, 45, 39, 29, 65, 69];
+// let n = arr.length;
 
-for (let i = 0; i < n - 1; i++) {
-    for (j = 0; j < n - 1 - i; j++) {
-        if (arr[j] > arr[j + 1]) {
-            let temp = arr[j];
-            arr[j] = arr[j + 1];
-            arr[j + 1] = temp;
-        }
-    }
-}
+// for (let i = 0; i < n - 1; i++) {
+//     for (j = 0; j < n - 1 - i; j++) {
+//         if (arr[j] > arr[j + 1]) {
+//             let temp = arr[j];
+//             arr[j] = arr[j + 1];
+//             arr[j + 1] = temp;
+//         }
+//     }
+// }
 
-console.log(arr);
+// console.log(arr);
 
 
 // Selection Sort 
 
 
-let arr = [10, 45, 39, 29, 65, 69];
-let n = arr.length ;
+// let arr = [10, 45, 39, 29, 65, 69];
+// let n = arr.length ;
 
-for(let i = 0 ; i<=n-1 ; i++){
-    let min = i ;
-    for(let j = i+1 ; j<n ;j++){
-        if(arr[j]<arr[min]) min = j ;
-    }
+// for(let i = 0 ; i<=n-1 ; i++){
+//     let min = i ;
+//     for(let j = i+1 ; j<n ;j++){
+//         if(arr[j]<arr[min]) min = j ;
+//     }
 
-    if(min != i ){
-        let temp = arr[min]
-        arr[min] = arr[i]
-        arr[i] = temp
+//     if(min != i ){
+//         let temp = arr[min]
+//         arr[min] = arr[i]
+//         arr[i] = temp
 
-    }
-}
+//     }
+// }
 
-console.log(arr);
+// console.log(arr);
 
 
 
