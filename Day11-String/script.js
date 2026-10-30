@@ -308,3 +308,106 @@ function isValidEmail(email) {
 
 console.log("Q20:", isValidEmail("user@example.com")); // true
 console.log("Q20:", isValidEmail("invalid-email"));    // false
+
+
+// Q21: Check if a string is a Pangram (contains every letter from a-z)
+function isPangram(str) {
+  let lower = str.toLowerCase();
+  for (let ch = "a".charCodeAt(0); ch <= "z".charCodeAt(0); ch++) {
+    let letter = String.fromCharCode(ch);
+    if (!lower.includes(letter)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+console.log("Q21:", isPangram("The quick brown fox jumps over the lazy dog")); // true
+console.log("Q21:", isPangram("Hello world"));                                 // false
+
+
+// Q22: Find the longest common prefix among an array of strings
+function longestCommonPrefix(strs) {
+  if (strs.length === 0) return "";
+
+  let prefix = strs[0];
+  for (let i = 1; i < strs.length; i++) {
+    while (!strs[i].startsWith(prefix)) {
+      prefix = prefix.slice(0, prefix.length - 1);
+      if (prefix === "") return "";
+    }
+  }
+  return prefix;
+}
+
+console.log("Q22:", longestCommonPrefix(["flower", "flow", "flight"])); // fl
+console.log("Q22:", longestCommonPrefix(["dog", "racecar", "car"]));    // ""
+
+
+// Q23: Find the most frequent (maximum occurring) character
+function maxOccurringChar(str) {
+  let freq = {};
+  let maxChar = "";
+  let maxCount = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    let ch = str[i];
+    freq[ch] = (freq[ch] || 0) + 1;
+
+    if (freq[ch] > maxCount) {
+      maxCount = freq[ch];
+      maxChar = ch;
+    }
+  }
+  return maxChar;
+}
+
+console.log("Q23:", maxOccurringChar("javascript")); // a
+console.log("Q23:", maxOccurringChar("success"));    // s
+
+
+// Q24: Check if a string is a subsequence of another string
+function isSubsequence(str1, str2) {
+  let p1 = 0;
+  let p2 = 0;
+
+  while (p1 < str1.length && p2 < str2.length) {
+    if (str1[p1] === str2[p2]) {
+      p1++;
+    }
+    p2++;
+  }
+
+  return p1 === str1.length;
+}
+
+console.log("Q24:", isSubsequence("abc", "ahbgdc")); // true
+console.log("Q24:", isSubsequence("axc", "ahbgdc")); // false
+
+
+// Q25: Check for balanced parentheses / brackets
+function isValidParentheses(str) {
+  let stack = [];
+  let map = {
+    ")": "(",
+    "}": "{",
+    "]": "["
+  };
+
+  for (let i = 0; i < str.length; i++) {
+    let ch = str[i];
+    if (ch === "(" || ch === "{" || ch === "[") {
+      stack.push(ch);
+    } else if (ch === ")" || ch === "}" || ch === "]") {
+      if (stack.length === 0 || stack.pop() !== map[ch]) {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
+}
+
+console.log("Q25:", isValidParentheses("({[]})")); // true
+console.log("Q25:", isValidParentheses("(]"));     // false
+

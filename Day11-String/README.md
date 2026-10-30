@@ -1,6 +1,6 @@
 # Day 11: String Practice Questions (Easy to Medium)
 
-20 common string interview questions written in clean, practical JavaScript without complex DSA structures.
+25 common string interview questions written in clean, practical JavaScript without complex DSA structures.
 
 ---
 
@@ -23,7 +23,7 @@
 
 ---
 
-### Medium (Q11 - Q20)
+### Medium (Q11 - Q25)
 
 | # | Question | Function Name |
 | :---: | :--- | :--- |
@@ -37,6 +37,11 @@
 | **Q18** | Custom trim function | `customTrim(str)` |
 | **Q19** | Find all substrings of a string | `getSubstrings(str)` |
 | **Q20** | Basic email validation | `isValidEmail(email)` |
+| **Q21** | Check if string is a pangram | `isPangram(str)` |
+| **Q22** | Longest common prefix among strings | `longestCommonPrefix(strs)` |
+| **Q23** | Find most frequent character | `maxOccurringChar(str)` |
+| **Q24** | Check if string is a subsequence | `isSubsequence(str1, str2)` |
+| **Q25** | Check balanced parentheses/brackets | `isValidParentheses(str)` |
 
 ---
 
