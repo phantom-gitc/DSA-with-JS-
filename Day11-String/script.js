@@ -411,3 +411,32 @@ function isValidParentheses(str) {
 console.log("Q25:", isValidParentheses("({[]})")); // true
 console.log("Q25:", isValidParentheses("(]"));     // false
 
+
+// Q26: Find the longest palindromic substring
+function longestPalindromicSubstring(str) {
+  let longest = "";
+
+  function expandAroundCenter(left, right) {
+    while (left >= 0 && right < str.length && str[left] === str[right]) {
+      left--;
+      right++;
+    }
+    return str.slice(left + 1, right);
+  }
+
+  for (let i = 0; i < str.length; i++) {
+    let oddPalindrome = expandAroundCenter(i, i);
+    let evenPalindrome = expandAroundCenter(i, i + 1);
+
+    if (oddPalindrome.length > longest.length) {
+      longest = oddPalindrome;
+    }
+    if (evenPalindrome.length > longest.length) {
+      longest = evenPalindrome;
+    }
+  }
+
+  return longest;
+}
+
+console.log("Q26:", longestPalindromicSubstring("babad")); // bab
