@@ -1,400 +1,269 @@
-// let prompt = require("prompt-sync")();
-// let size = Number(prompt("Enter the array size:"));
-
-// Q1: Sum of Array and there Average
-
-// let arr = new Array(size);
-// let sum = 0
-// for(let i = 0 ; i<arr.length ;i++){
-//     arr[i] = Number(prompt("Enter the element "))
-//     sum += arr[i];
-// }
-// console.log(arr);
-// console.log(sum) ;
-// console.log(sum/arr.length);
-
-// Q2 : Find the Greatest Element in Array
-
-// Basic Type Solution
-
-// let arr = new Array(size);
-// arr[0] = Number(prompt("Enter the first element : "))
-// let max = arr[0];
-// for(let i = 0; i<arr.length;i++){
-//     arr[i] = Number(prompt("Enter the element : "  ));
-//     if(arr[i] > max){
-//         max = arr[i];
-
-//     }
-// }
-// console.log(max);
-
-// @2 Advanced Type Solution
-
-// if (size <= 0) {
-//   console.log("Invalid arry Size ");
-// } else {
-//   let max = -Infinity;
-//   let min = Infinity;
-//   let isAllSame = true;
-//   let firstValue;
-
-//   for (let i = 0; i < size; i++) {
-//     let num = Number(prompt("Enter the element : " + (i + 1) + " : "));
-//     if (i === 0) {
-//       firstValue = num;
-//     } else {
-//       if (num !== firstValue) {
-//         isAllSame = false;
-//       }
-//     }
-
-//     if (num > max) max = num;
-//     if (num < min) min = num;
-//   }
-
-//   console.log("Maxium : ", max);
-//   console.log("Minium : ", min);
-
-//   if (isAllSame) {
-//     console.log("All elements are same : ");
-//   } else {
-//     console.log("All elements are not same ");
-//   }
-// }
+// ==========================================
+// Q1: Sum of Array and their Average
+// ==========================================
+function sumAndAverage(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  let avg = arr.length > 0 ? sum / arr.length : 0;
+  return { sum, average: avg };
+}
+console.log("Q1 Sum and Average:", sumAndAverage([10, 20, 30, 40, 50]));
 
 
+// ==========================================
+// Q2: Find Greatest and Smallest Element in Array
+// ==========================================
+function findMaxAndMin(arr) {
+  if (arr.length === 0) return null;
+  let max = arr[0];
+  let min = arr[0];
 
-// Q3: Find the Second Max Element in Array ..
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > max) max = arr[i];
+    if (arr[i] < min) min = arr[i];
+  }
 
-// let arr = [13 , 45 , 99 , 99 ,23 , 56 , 78  ];
-
-// let max = Math.max(arr[0],arr[1]);
-// let SecondMax = Math.min(arr[0],arr[1]);
-
-// for(let i = 2 ; i<arr.length ;i++){
-//     if(arr[i]>max){
-//       SecondMax = max;
-//       max = arr[i];
-//     }else if(arr[i]>SecondMax && arr[i]!==max){
-//       SecondMax = arr[i];
-//     } 
-// }
-// console.log("Second Max Element : ",SecondMax);
-
-
-// Q4: Reverse the Array Element.
-
-// Approach 1 (Using Extra Array ( space))...
-
-// let arr = [1 ,2 , 3 , 4 , 5,6,7];
-
-// let tempArr = new Array(arr.length);
-
-// let i = 0 ; 
-// for(j = arr.length-1 ; j>=0 ; j--){
-//   tempArr[i] = arr[j];
-//   i++;
-// }
-// console.log(tempArr);
-
-// Approach 2 (Without using extra space )
-
-// let arr = [ 1 , 4, 6 ,7,4,9];
-
-// let i = 0  , j = arr.length-1;
-// while(i<j){
-//   let temp = arr[i];
-//   arr[i] = arr[j];
-//   arr[j] = temp;
-//   i++;
-//   j--;
-// }
-// console.log(arr);
-
-// Q5: All Zero to left and All once to right.
-
-// let arr = [ 1 , 0 , 1 , 0 , 1 , 0, 0 , 1 , 0 , 1 , 0 , 1 , 0 , 1 , 0 , 1 , 0 , 1 , 0 , 1 ,  1 , 0 , 1 , 0];
-
-// let i = 0 , j = 0 ;
-
-// while(i<arr.length){
-//   if(arr[i]==0){
-//     let temp = arr[i];
-//     arr[i] = arr[j];
-//     arr[j] = temp;
-//     j++;
-//   }
-//   i++;
-// }
-// console.log(arr);
+  return { max, min };
+}
+console.log("Q2 Max and Min:", findMaxAndMin([12, 45, 2, 67, 34]));
 
 
-// Q6: Array Left Rotation by 1 
+// ==========================================
+// Q3: Find Second Max Element in Array
+// ==========================================
+function findSecondMax(arr) {
+  if (arr.length < 2) return null;
+
+  let max = -Infinity;
+  let secondMax = -Infinity;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > max) {
+      secondMax = max;
+      max = arr[i];
+    } else if (arr[i] > secondMax && arr[i] !== max) {
+      secondMax = arr[i];
+    }
+  }
+
+  return secondMax === -Infinity ? null : secondMax;
+}
+console.log("Q3 Second Max:", findSecondMax([13, 45, 99, 99, 23, 56, 78])); // 78
 
 
-// let arr = [ 1 , 2 , 3 , 4 , 5];
-// let temp = arr[0];
+// ==========================================
+// Q4: Reverse Array Elements (In-Place)
+// ==========================================
+function reverseArray(arr) {
+  let left = 0;
+  let right = arr.length - 1;
 
-// for(let i = 0 ; i<arr.length-1 ; i++){
-//   arr[i] = arr[i+1];
-// }
-// arr[arr.length-1] = temp ; 
-// console.log(arr)
-
-
-// Q7: Array Right Rotation by 1 
-
-// let arr = [ 1,2,4,5,2,7];
-
-// let temp = arr[arr.length-1];
-
-// for(let i = arr.length -1 ; i>0 ; i--){
-//   arr[i] = arr[i-1];
-// }
-// arr[0] = temp ;
-
-// console.log(arr);
+  while (left < right) {
+    let temp = arr[left];
+    arr[left] = arr[right];
+    arr[right] = temp;
+    left++;
+    right--;
+  }
+  return arr;
+}
+console.log("Q4 Reverse Array:", reverseArray([1, 4, 6, 7, 4, 9]));
 
 
-// ====================================================================
-// MORE ARRAY PRACTICE QUESTIONS & SOLUTIONS (PURELY ITERATIVE - NO RECURSION)
-// Easy to Medium problems testing Two Pointers, Prefix/Suffix, & In-Place techniques
-// ====================================================================
+// ==========================================
+// Q5: Move All Zeros to Left and Ones to Right
+// ==========================================
+function moveZerosToLeft(arr) {
+  let j = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 0) {
+      let temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+      j++;
+    }
+  }
+  return arr;
+}
+console.log("Q5 Zeros to Left:", moveZerosToLeft([1, 0, 1, 0, 1, 0, 0, 1]));
+
+
+// ==========================================
+// Q6: Array Left Rotation by 1
+// ==========================================
+function rotateLeftByOne(arr) {
+  if (arr.length <= 1) return arr;
+  let temp = arr[0];
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    arr[i] = arr[i + 1];
+  }
+  arr[arr.length - 1] = temp;
+  return arr;
+}
+console.log("Q6 Rotate Left by 1:", rotateLeftByOne([1, 2, 3, 4, 5])); // [2, 3, 4, 5, 1]
+
+
+// ==========================================
+// Q7: Array Right Rotation by 1
+// ==========================================
+function rotateRightByOne(arr) {
+  if (arr.length <= 1) return arr;
+  let temp = arr[arr.length - 1];
+
+  for (let i = arr.length - 1; i > 0; i--) {
+    arr[i] = arr[i - 1];
+  }
+  arr[0] = temp;
+  return arr;
+}
+console.log("Q7 Rotate Right by 1:", rotateRightByOne([1, 2, 3, 4, 5])); // [5, 1, 2, 3, 4]
 
 
 // ==========================================
 // Q8: Rotate Array by K Steps (Right Rotation)
-// Problem: Given an array and integer k, rotate the array to the right by k steps.
-// Example: [1, 2, 3, 4, 5, 6, 7], k = 3 -> [5, 6, 7, 1, 2, 3, 4]
-// Concept: The 3-Step Reversal Algorithm (O(1) extra space!):
-//   1. Reverse the entire array -> [7, 6, 5, 4, 3, 2, 1]
-//   2. Reverse first k elements -> [5, 6, 7, 4, 3, 2, 1]
-//   3. Reverse remaining (n-k)  -> [5, 6, 7, 1, 2, 3, 4]
-// Time Complexity: O(n), Space Complexity: O(1)
 // ==========================================
-
 function reverseSubarray(arr, start, end) {
-    while (start < end) {
-        let temp = arr[start];
-        arr[start] = arr[end];
-        arr[end] = temp;
-        start++;
-        end--;
-    }
+  while (start < end) {
+    let temp = arr[start];
+    arr[start] = arr[end];
+    arr[end] = temp;
+    start++;
+    end--;
+  }
 }
 
 function rotateArrayRightByK(arr, k) {
-    let n = arr.length;
-    k = k % n; // If k > n, only rotate effective steps
+  let n = arr.length;
+  k = k % n;
 
-    // Step 1: Reverse entire array
-    reverseSubarray(arr, 0, n - 1);
-    // Step 2: Reverse first k elements
-    reverseSubarray(arr, 0, k - 1);
-    // Step 3: Reverse the remaining n - k elements
-    reverseSubarray(arr, k, n - 1);
+  reverseSubarray(arr, 0, n - 1);
+  reverseSubarray(arr, 0, k - 1);
+  reverseSubarray(arr, k, n - 1);
 
-    return arr;
+  return arr;
 }
-
-// Test Q8:
-// let arr8 = [1, 2, 3, 4, 5, 6, 7];
-// console.log("Rotated by 3:", rotateArrayRightByK(arr8, 3)); // [5, 6, 7, 1, 2, 3, 4]
+console.log("Q8 Rotated by 3:", rotateArrayRightByK([1, 2, 3, 4, 5, 6, 7], 3)); // [5, 6, 7, 1, 2, 3, 4]
 
 
 // ==========================================
 // Q9: Check if an Array is a Palindrome
-// Problem: Check if array reads the same forward and backward.
-// Example: [1, 2, 3, 2, 1] -> true
-//          [1, 2, 3, 4, 5] -> false
-// Concept: Two pointers (left at 0, right at end) moving inward.
-// Time Complexity: O(n), Space Complexity: O(1)
 // ==========================================
-
 function isArrayPalindrome(arr) {
-    let left = 0;
-    let right = arr.length - 1;
+  let left = 0;
+  let right = arr.length - 1;
 
-    while (left < right) {
-        if (arr[left] !== arr[right]) {
-            return false;
-        }
-        left++;
-        right--;
+  while (left < right) {
+    if (arr[left] !== arr[right]) {
+      return false;
     }
-
-    return true;
+    left++;
+    right--;
+  }
+  return true;
 }
-
-// Test Q9:
-// console.log("Is [1, 2, 3, 2, 1] palindrome?:", isArrayPalindrome([1, 2, 3, 2, 1])); // true
-// console.log("Is [1, 2, 3, 4, 5] palindrome?:", isArrayPalindrome([1, 2, 3, 4, 5])); // false
+console.log("Q9 Palindrome Check [1, 2, 3, 2, 1]:", isArrayPalindrome([1, 2, 3, 2, 1])); // true
+console.log("Q9 Palindrome Check [1, 2, 3, 4, 5]:", isArrayPalindrome([1, 2, 3, 4, 5])); // false
 
 
 // ==========================================
 // Q10: Remove Duplicates from Sorted Array (In-Place)
-// Problem: Given a sorted array, remove duplicates in-place such that each unique element appears once.
-// Returns the count of unique elements.
-// Example: [1, 1, 2, 2, 3, 4, 4] -> returns 4 (unique elements are [1, 2, 3, 4])
-// Concept: Two Pointers (Slow pointer 'i' marks unique boundary, fast pointer 'j' scans)
-// Time Complexity: O(n), Space Complexity: O(1)
 // ==========================================
-
 function removeDuplicatesSorted(arr) {
-    if (arr.length === 0) return 0;
+  if (arr.length === 0) return 0;
+  let i = 0;
 
-    let i = 0; // Points to last unique element found
-
-    for (let j = 1; j < arr.length; j++) {
-        if (arr[j] !== arr[i]) {
-            i++;
-            arr[i] = arr[j]; // Move new unique element forward
-        }
+  for (let j = 1; j < arr.length; j++) {
+    if (arr[j] !== arr[i]) {
+      i++;
+      arr[i] = arr[j];
     }
-
-    return i + 1; // Number of unique elements
+  }
+  return i + 1;
 }
-
-// Test Q10:
-// let arr10 = [1, 1, 2, 2, 3, 4, 4];
-// let count = removeDuplicatesSorted(arr10);
-// console.log("Unique count:", count); // 4
-// console.log("Array with unique elements:", arr10.slice(0, count)); // [1, 2, 3, 4]
+let arr10 = [1, 1, 2, 2, 3, 4, 4];
+let uniqueCount = removeDuplicatesSorted(arr10);
+console.log("Q10 Unique count:", uniqueCount, "Elements:", arr10.slice(0, uniqueCount));
 
 
 // ==========================================
-// Q11: Two Sum in Sorted Array (Pair with Given Sum)
-// Problem: Given a sorted array, find two numbers whose sum equals target.
-// Example: arr = [2, 7, 11, 15], target = 9 -> [2, 7]
-// Concept: Two Pointers (left at 0, right at end):
-//   - If sum === target: found!
-//   - If sum < target: need larger number, left++
-//   - If sum > target: need smaller number, right--
-// Time Complexity: O(n), Space Complexity: O(1)
+// Q11: Two Sum in Sorted Array
 // ==========================================
-
 function twoSumSorted(arr, target) {
-    let left = 0;
-    let right = arr.length - 1;
+  let left = 0;
+  let right = arr.length - 1;
 
-    while (left < right) {
-        let currentSum = arr[left] + arr[right];
-
-        if (currentSum === target) {
-            return [arr[left], arr[right]];
-        } else if (currentSum < target) {
-            left++;
-        } else {
-            right--;
-        }
+  while (left < right) {
+    let currentSum = arr[left] + arr[right];
+    if (currentSum === target) {
+      return [arr[left], arr[right]];
+    } else if (currentSum < target) {
+      left++;
+    } else {
+      right--;
     }
-
-    return null; // No pair found
+  }
+  return null;
 }
+console.log("Q11 Two Sum Sorted (target 9):", twoSumSorted([2, 7, 11, 15], 9)); // [2, 7]
 
-// Test Q11:
-// let arr11 = [2, 7, 11, 15];
-// console.log("Pair with sum 9:", twoSumSorted(arr11, 9)); // [2, 7]
-// console.log("Pair with sum 20:", twoSumSorted(arr11, 20)); // null
 
 // ==========================================
-
 // Q12: Find Missing Number from 1 to N
-// Problem: Given an array of size (n - 1) containing distinct numbers from 1 to n.
-// Find the missing number.
-// Example: [1, 2, 4, 5, 6], n = 6 -> Missing is 3
-// Concept:
-//   - Sum of first n natural numbers = n * (n + 1) / 2
-//   - Missing number = (Expected Sum) - (Actual Sum of array)
-// Time Complexity: O(n), Space Complexity: O(1)
-
-
 // ==========================================
-
 function findMissingNumber(arr, n) {
-    let expectedSum = (n * (n + 1)) / 2;
-    let actualSum = 0;
+  let expectedSum = (n * (n + 1)) / 2;
+  let actualSum = 0;
 
-    for (let i = 0; i < arr.length; i++) {
-        actualSum += arr[i];
-    }
-
-    return expectedSum - actualSum;
+  for (let i = 0; i < arr.length; i++) {
+    actualSum += arr[i];
+  }
+  return expectedSum - actualSum;
 }
-
-// Test Q12:
-// let arr12 = [1, 2, 4, 5, 6];
-// console.log("Missing number:", findMissingNumber(arr12, 6)); // 3
+console.log("Q12 Missing number from [1, 2, 4, 5, 6]:", findMissingNumber([1, 2, 4, 5, 6], 6)); // 3
 
 
 // ==========================================
 // Q13: Leaders in an Array
-// Problem: An element is a leader if it is strictly greater than all elements to its right.
-// The rightmost element is ALWAYS a leader.
-// Example: [16, 17, 4, 3, 5, 2] -> Leaders are [17, 5, 2]
-// Concept: Scan from RIGHT to LEFT keeping track of max element seen so far!
-// Time Complexity: O(n), Space Complexity: O(1) extra space
 // ==========================================
-
 function findLeaders(arr) {
-    let n = arr.length;
-    if (n === 0) return [];
+  let n = arr.length;
+  if (n === 0) return [];
 
-    let leaders = [];
-    let maxFromRight = arr[n - 1];
+  let leaders = [];
+  let maxFromRight = arr[n - 1];
+  leaders.push(maxFromRight);
 
-    // Rightmost element is always a leader
-    leaders.push(maxFromRight);
-
-    for (let i = n - 2; i >= 0; i--) {
-        if (arr[i] > maxFromRight) {
-            maxFromRight = arr[i];
-            leaders.push(maxFromRight);
-        }
+  for (let i = n - 2; i >= 0; i--) {
+    if (arr[i] > maxFromRight) {
+      maxFromRight = arr[i];
+      leaders.push(maxFromRight);
     }
-
-    // Leaders were collected right-to-left, reverse to maintain original order
-    leaders.reverse();
-    return leaders;
+  }
+  leaders.reverse();
+  return leaders;
 }
-
-// Test Q13:
-// let arr13 = [16, 17, 4, 3, 5, 2];
-// console.log("Leaders:", findLeaders(arr13)); // [17, 5, 2]
+console.log("Q13 Leaders in [16, 17, 4, 3, 5, 2]:", findLeaders([16, 17, 4, 3, 5, 2])); // [17, 5, 2]
 
 
 // ==========================================
 // Q14: Maximum Subarray Sum (Kadane's Algorithm)
-// Problem: Find the contiguous subarray which has the largest sum.
-// Example: [-2, 1, -3, 4, -1, 2, 1, -5, 4] -> Subarray [4, -1, 2, 1] has max sum = 6
-// Concept:
-//   - Keep adding elements to `currentSum`.
-//   - If `currentSum > maxSum`, update `maxSum`.
-//   - If `currentSum < 0`, reset `currentSum = 0` (negative sum won't help future subarrays).
-// Time Complexity: O(n), Space Complexity: O(1)
 // ==========================================
-
 function maxSubarraySum(arr) {
-    let maxSum = -Infinity;
-    let currentSum = 0;
+  let maxSum = -Infinity;
+  let currentSum = 0;
 
-    for (let i = 0; i < arr.length; i++) {
-        currentSum += arr[i];
-
-        if (currentSum > maxSum) {
-            maxSum = currentSum;
-        }
-
-        // If current sum becomes negative, discard it
-        if (currentSum < 0) {
-            currentSum = 0;
-        }
+  for (let i = 0; i < arr.length; i++) {
+    currentSum += arr[i];
+    if (currentSum > maxSum) {
+      maxSum = currentSum;
     }
-
-    return maxSum;
+    if (currentSum < 0) {
+      currentSum = 0;
+    }
+  }
+  return maxSum;
 }
-
-// Test Q14:
-// let arr14 = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
-// console.log("Max Subarray Sum:", maxSubarraySum(arr14)); // 6
+console.log("Q14 Max Subarray Sum:", maxSubarraySum([-2, 1, -3, 4, -1, 2, 1, -5, 4])); // 6
