@@ -4,7 +4,7 @@ All questions and solutions are **purely iterative** using loops (no recursion).
 
 ---
 
-## 📌 Summary of Questions (Q1 to Q14)
+## 📌 Summary of Questions (Q1 to Q15)
 
 | # | Question | Core Pattern / Concept | Time | Space |
 | :---: | :--- | :--- | :---: | :---: |
@@ -22,6 +22,7 @@ All questions and solutions are **purely iterative** using loops (no recursion).
 | **Q12** | Find Missing Number ($1 \dots N$) | Sum formula $n(n+1)/2 - \text{actualSum}$ | $O(n)$ | $O(1)$ |
 | **Q13** | Leaders in an Array | Right-to-left scan tracking `maxFromRight` | $O(n)$ | $O(1)$ |
 | **Q14** | Maximum Subarray Sum | Kadane's Algorithm | $O(n)$ | $O(1)$ |
+| **Q15** | Count Even and Odd Numbers | Single pass frequency count | $O(n)$ | $O(1)$ |
 
 ---
 

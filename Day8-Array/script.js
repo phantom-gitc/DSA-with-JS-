@@ -267,3 +267,23 @@ function maxSubarraySum(arr) {
   return maxSum;
 }
 console.log("Q14 Max Subarray Sum:", maxSubarraySum([-2, 1, -3, 4, -1, 2, 1, -5, 4])); // 6
+
+
+// ==========================================
+// Q15: Count Even and Odd Numbers in Array
+// ==========================================
+function countEvenAndOdd(arr) {
+  let even = 0;
+  let odd = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
+      even++;
+    } else {
+      odd++;
+    }
+  }
+
+  return { even, odd };
+}
+console.log("Q15 Count Even and Odd:", countEvenAndOdd([1, 2, 3, 4, 5, 6, 7, 8, 9])); // { even: 4, odd: 5 }
