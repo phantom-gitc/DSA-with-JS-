@@ -386,27 +386,7 @@ console.log("Q24:", isSubsequence("axc", "ahbgdc")); // false
 
 
 // Q25: Check for balanced parentheses / brackets
-function isValidParentheses(str) {
-  let stack = [];
-  let map = {
-    ")": "(",
-    "}": "{",
-    "]": "["
-  };
 
-  for (let i = 0; i < str.length; i++) {
-    let ch = str[i];
-    if (ch === "(" || ch === "{" || ch === "[") {
-      stack.push(ch);
-    } else if (ch === ")" || ch === "}" || ch === "]") {
-      if (stack.length === 0 || stack.pop() !== map[ch]) {
-        return false;
-      }
-    }
-  }
-
-  return stack.length === 0;
-}
 
 console.log("Q25:", isValidParentheses("({[]})")); // true
 console.log("Q25:", isValidParentheses("(]"));     // false
