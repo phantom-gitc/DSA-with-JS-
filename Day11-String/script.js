@@ -1,4 +1,5 @@
 // Q1: Reverse a string
+
 function reverseString(str) {
   let reversed = "";
   for (let i = str.length - 1; i >= 0; i--) {
@@ -11,6 +12,7 @@ console.log("Q1:", reverseString("javascript")); // tpircsavaj
 
 
 // Q2: Check if a string is palindrome
+
 function isPalindrome(str) {
   let reversed = "";
   for (let i = str.length - 1; i >= 0; i--) {
@@ -387,6 +389,27 @@ console.log("Q24:", isSubsequence("axc", "ahbgdc")); // false
 
 // Q25: Check for balanced parentheses / brackets
 
+function isValidParentheses(str) {
+  let stack = [];
+  let map = {
+    ")": "(",
+    "}": "{",
+    "]": "["
+  };
+
+  for (let i = 0; i < str.length; i++) {
+    let ch = str[i];
+    if (ch === "(" || ch === "{" || ch === "[") {
+      stack.push(ch);
+    } else if (ch === ")" || ch === "}" || ch === "]") {
+      if (stack.length === 0 || stack.pop() !== map[ch]) {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
+}
 
 console.log("Q25:", isValidParentheses("({[]})")); // true
 console.log("Q25:", isValidParentheses("(]"));     // false
