@@ -443,3 +443,44 @@ function longestPalindromicSubstring(str) {
 }
 
 console.log("Q26:", longestPalindromicSubstring("babad")); // bab
+
+
+// Q27: Count the number of words in a sentence
+function countWords(sentence) {
+  if (sentence.trim() === "") return 0;
+
+  let words = sentence.trim().split(/\s+/);
+  return words.length;
+}
+
+console.log("Q27:", countWords("Learn JavaScript string methods")); // 4
+console.log("Q27:", countWords("   hello    world   "));           // 2
+
+
+// Q28: Find the first repeated character in a string
+function firstRepeatedChar(str) {
+  let seen = {};
+
+  for (let i = 0; i < str.length; i++) {
+    let ch = str[i];
+    if (seen[ch]) {
+      return ch;
+    }
+    seen[ch] = true;
+  }
+
+  return null;
+}
+
+console.log("Q28:", firstRepeatedChar("google")); // o
+console.log("Q28:", firstRepeatedChar("javascript")); // a
+
+
+// Q29: Convert a string to kebab-case
+function toKebabCase(str) {
+  let words = str.trim().split(/\s+/);
+  return words.join("-").toLowerCase();
+}
+
+console.log("Q29:", toKebabCase("Hello World")); // hello-world
+console.log("Q29:", toKebabCase("  JavaScript   String  Methods ")); // javascript-string-methods
