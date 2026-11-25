@@ -484,3 +484,19 @@ function toKebabCase(str) {
 
 console.log("Q29:", toKebabCase("Hello World")); // hello-world
 console.log("Q29:", toKebabCase("  JavaScript   String  Methods ")); // javascript-string-methods
+
+
+// Q30: Convert a string to snake_case
+function toSnakeCase(str) {
+  let words = str
+    .trim()
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/[_\-\s]+/g, " ")
+    .split(" ")
+    .filter((word) => word.length > 0);
+
+  return words.join("_").toLowerCase();
+}
+
+console.log("Q30:", toSnakeCase("Hello World")); // hello_world
+console.log("Q30:", toSnakeCase("JavaScript String Methods")); // java_script_string_methods
