@@ -10,4 +10,4 @@ Run a lesson script with Node.js from the repository root, for example:
 node Day11-String/script.js
 ```
 
-The Day 11 lesson covers 26 string exercises, including reversing strings, checking palindromes, and finding substrings. You can also open `Day11-String/index.html` in a browser and view the results in the developer console.
+The Day 11 lesson covers 31 string exercises, including reversing strings, checking palindromes, converting case formats, and finding substrings. You can also open `Day11-String/index.html` in a browser and view the results in the developer console.

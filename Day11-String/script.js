@@ -500,3 +500,20 @@ function toSnakeCase(str) {
 
 console.log("Q30:", toSnakeCase("Hello World")); // hello_world
 console.log("Q30:", toSnakeCase("JavaScript String Methods")); // java_script_string_methods
+
+
+// Q31: Remove duplicate characters while preserving their order
+function removeDuplicateChars(str) {
+  let result = "";
+
+  for (let i = 0; i < str.length; i++) {
+    if (!result.includes(str[i])) {
+      result += str[i];
+    }
+  }
+
+  return result;
+}
+
+console.log("Q31:", removeDuplicateChars("programming")); // progamin
+console.log("Q31:", removeDuplicateChars("javascript")); // javscript
