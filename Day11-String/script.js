@@ -517,3 +517,74 @@ function removeDuplicateChars(str) {
 
 console.log("Q31:", removeDuplicateChars("programming")); // progamin
 console.log("Q31:", removeDuplicateChars("javascript")); // javscript
+
+
+// Q32: Find the length of the longest substring without repeating characters
+function lengthOfLongestUniqueSubstring(str) {
+  let lastSeen = new Map();
+  let start = 0;
+  let maxLength = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    let ch = str[i];
+    if (lastSeen.has(ch) && lastSeen.get(ch) >= start) {
+      start = lastSeen.get(ch) + 1;
+    }
+    lastSeen.set(ch, i);
+    maxLength = Math.max(maxLength, i - start + 1);
+  }
+
+  return maxLength;
+}
+
+console.log("Q32:", lengthOfLongestUniqueSubstring("abcabcbb")); // 3
+console.log("Q32:", lengthOfLongestUniqueSubstring("bbbbb"));    // 1
+
+
+// Q33: Check if two strings are isomorphic
+function areIsomorphic(str1, str2) {
+  if (str1.length !== str2.length) return false;
+
+  let forward = new Map();
+  let reverse = new Map();
+
+  for (let i = 0; i < str1.length; i++) {
+    let ch1 = str1[i];
+    let ch2 = str2[i];
+
+    if (
+      (forward.has(ch1) && forward.get(ch1) !== ch2) ||
+      (reverse.has(ch2) && reverse.get(ch2) !== ch1)
+    ) {
+      return false;
+    }
+
+    forward.set(ch1, ch2);
+    reverse.set(ch2, ch1);
+  }
+
+  return true;
+}
+
+console.log("Q33:", areIsomorphic("egg", "add"));     // true
+console.log("Q33:", areIsomorphic("foo", "bar"));     // false
+console.log("Q33:", areIsomorphic("paper", "title")); // true
+
+
+// Q34: Count occurrences of a substring, including overlapping matches
+function countSubstringOccurrences(str, substring) {
+  if (substring.length === 0) return 0;
+
+  let count = 0;
+  let index = 0;
+
+  while ((index = str.indexOf(substring, index)) !== -1) {
+    count++;
+    index++;
+  }
+
+  return count;
+}
+
+console.log("Q34:", countSubstringOccurrences("banana", "ana")); // 2
+console.log("Q34:", countSubstringOccurrences("hello", "ll"));   // 1
